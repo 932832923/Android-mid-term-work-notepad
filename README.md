@@ -34,6 +34,7 @@ public class DateUtil {
 ```
 
 ### 三. `添加笔记查询功能：`
+![Alt Text](./002.png)
 1. NotesListAdapter.java 通过 Cursor 查询从数据库获取笔记数据，并在 readDate() 和 readDate(Cursor cursor) 方法中处理。
 
 ```properties
@@ -41,7 +42,7 @@ public void readDate() {
     mDate.clear();
     while(cursor.moveToNext()) {
         mDate.add(new NoteBean(cursor.getString(COLUMN_INDEX_TITLE), cursor.getString(COLUMN_INDEX_MODIFICATION_DATE), cursor.getString(COLUMN_INDEX_ID)));
-        Log.d("hhh", cursor.getString(COLUMN_INDEX_TITLE) + "," + cursor.getString(COLUMN_INDEX_MODIFICATION_DATE) + "," + cursor.getString(COLUMN_INDEX_ID));
+        Log.d("search", cursor.getString(COLUMN_INDEX_TITLE) + "," + cursor.getString(COLUMN_INDEX_MODIFICATION_DATE) + "," + cursor.getString(COLUMN_INDEX_ID));
     }
 }
 ```
@@ -51,7 +52,7 @@ public void readDate(Cursor cursor) {
     mDate.clear();
     while(cursor.moveToNext()) {
         mDate.add(new NoteBean(cursor.getString(COLUMN_INDEX_TITLE), cursor.getString(COLUMN_INDEX_MODIFICATION_DATE), cursor.getString(COLUMN_INDEX_ID)));
-        Log.d("hhh", cursor.getString(COLUMN_INDEX_TITLE) + "," + cursor.getString(COLUMN_INDEX_MODIFICATION_DATE) + "," + cursor.getString(COLUMN_INDEX_ID));
+        Log.d("search", cursor.getString(COLUMN_INDEX_TITLE) + "," + cursor.getString(COLUMN_INDEX_MODIFICATION_DATE) + "," + cursor.getString(COLUMN_INDEX_ID));
     }
 }
 ```
@@ -69,6 +70,8 @@ mCursor = managedQuery(
 
 ```
 
+在 onResume() 方法中，mCursor 被移动到第一行数据，mText.setText() 设置了笔记的标题到 EditText 中。
+
 ```properties
 @Override
 protected void onResume() {
@@ -84,6 +87,7 @@ protected void onResume() {
 ```
    
 3. NotesLiveFolder.java 通过设置 URI 创建 Live Folder，间接依赖笔记数据。
+通过设置 LIVE_FOLDER_URI，将查询的 URI 用于创建 Live Folder。
 
 ```properties
 liveFolderIntent.setData(NotePad.Notes.LIVE_FOLDER_URI);
@@ -106,7 +110,7 @@ public void Search(String searchTitle) {
 ```
 
 ### 四. `UI美化:`
-1. 更改背景颜色
+1. 更改背景
 
 ```properties
 /*背景颜色选择框*/
@@ -122,9 +126,7 @@ private  void showpopSelectBgWindows(){
 ```
 
 ```properties
-/*
-    背景改变的监听
-     */
+/*背景改变的监听*/
     public void ColorSelect(View view) {
         String color;
         if (view.getId() == R.id.pink) {
@@ -227,4 +229,208 @@ private  void showpopSelectBgWindows(){
 </LinearLayout>
 ```
 
-2. 
+2. 设置主题
+
+`AppTheme 主题：`
+
+设置整个应用的风格，包括 ActionBar 的背景颜色（PaleVioletRed），菜单文字颜色（white），以及溢出按钮的样式（icon_menu）。
+
+```properties
+<style name="AppTheme" parent="android:Theme.Holo.Light">
+    <item name="android:actionBarStyle">@style/MyActionBar</item>
+    <item name="android:actionMenuTextColor">@color/white</item>
+    <item name="android:actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>
+</style>
+```
+
+作用：定义整个应用的主主题，继承自 android:Theme.Holo.Light。
+
+`MyActionBar：`
+
+自定义 ActionBar，设置背景颜色和标题文字样式。
+
+```properties
+<style name="MyActionBar" parent="android:Widget.Holo.ActionBar">
+    <item name="android:titleTextStyle">@style/MyTitleStyle</item>
+    <item name="android:background">@color/PaleVioletRed</item>
+</style>
+```
+
+作用：自定义 ActionBar 的外观，继承自 android:Widget.Holo.ActionBar。
+
+`MyOverflowButtonStyle：`
+
+修改溢出菜单按钮的图标。
+
+```properties
+<style name="MyOverflowButtonStyle" parent="android:Widget.ActionButton.Overflow">
+    <item name="android:src">@drawable/icon_menu</item>
+</style>
+```
+
+作用：自定义溢出菜单按钮的样式。
+
+`MyMenu：`
+
+自定义菜单项的字体大小、颜色和样式。
+
+```properties
+<style name="MyMenu" parent="android:TextAppearance.Holo.Small">
+    <item name="android:textSize">16sp</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">@color/white</item>
+</style>
+```
+
+作用：定义菜单文字的样式。
+
+`AppThemeDialog：`
+
+定义了一个对话框样式，但未添加具体的自定义样式。
+
+```properties
+<style name="AppThemeDialog" parent="android:Theme.Holo.Dialog">
+</style>
+```
+
+
+
+### 五. `支持多类型笔记:`
+1. 文件：NoteEditor.java
+pickImageFromGallery：启动相册选择图片。
+onActivityResult：接收图片的 URI。
+insertImageToDatabase：将图片 URI 保存到数据库。
+
+```porperties
+// 定义请求码
+private static final int REQUEST_CODE_PICK_IMAGE = 1;
+
+// 在点击按钮时触发选择图片的功能
+public void pickImageFromGallery() {
+    Intent intent = new Intent(Intent.ACTION_PICK);
+    intent.setType("image/*"); // 指定只选择图片
+    startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE); // 启动选择器
+}
+
+// 接收相册返回的图片 URI
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == RESULT_OK && data != null) {
+        Uri selectedImageUri = data.getData(); // 获取图片的 URI
+        if (selectedImageUri != null) {
+            insertImageToDatabase(selectedImageUri); // 调用插入图片的方法
+        }
+    }
+}
+
+// 将图片插入数据库的方法
+private void insertImageToDatabase(Uri imageUri) {
+    ContentValues values = new ContentValues();
+    values.put(NotePad.Notes.COLUMN_NAME_IMAGE, imageUri.toString()); // 假设数据库有 IMAGE 字段
+    getContentResolver().update(mUri, values, null, null); // 更新到数据库中
+}
+
+```
+
+3. 文件：NotePadProvider.java
+数据库表增加 COLUMN_NAME_IMAGE 字段支持存储图片 URI。
+
+```properties
+@Override
+public void onCreate(SQLiteDatabase db) {
+    db.execSQL("CREATE TABLE " + NotePad.Notes.TABLE_NAME + " ("
+            + NotePad.Notes._ID + " INTEGER PRIMARY KEY,"
+            + NotePad.Notes.COLUMN_NAME_TITLE + " TEXT,"
+            + NotePad.Notes.COLUMN_NAME_NOTE + " TEXT,"
+            + NotePad.Notes.COLUMN_NAME_CREATE_DATE + " INTEGER,"
+            + NotePad.Notes.COLUMN_NAME_MODIFICATION_DATE + " INTEGER,"
+            + NotePad.Notes.COLUMN_NAME_IMAGE + " TEXT" // 添加图片 URI 字段
+            + ");");
+}
+```
+
+```properties
+sNotesProjectionMap.put(NotePad.Notes.COLUMN_NAME_IMAGE, NotePad.Notes.COLUMN_NAME_IMAGE);
+```
+
+4. 文件：NotesListAdapter.java
+在 getView 方法中加载图片 URI 并显示。
+
+```properties
+@Override
+public View getView(int position, View convertView, ViewGroup parent) {
+    ViewHold viewHold;
+    if (convertView == null) {
+        viewHold = new ViewHold();
+        convertView = inflater.inflate(R.layout.noteslistitem, null);
+        viewHold.iv_noteImage = (ImageView) convertView.findViewById(R.id.iv_noteImage); // 图片控件
+        viewHold.tv_title = (TextView) convertView.findViewById(R.id.tv_title);
+        viewHold.tv_data = (TextView) convertView.findViewById(R.id.tv_data);
+        convertView.setTag(viewHold);
+    } else {
+        viewHold = (ViewHold) convertView.getTag();
+    }
+
+    // 获取当前笔记的图片 URI
+    String imageUri = mDate.get(position).getImageUri();
+    if (imageUri != null) {
+        viewHold.iv_noteImage.setImageURI(Uri.parse(imageUri)); // 加载图片
+    } else {
+        viewHold.iv_noteImage.setImageResource(R.drawable.default_image); // 无图片时显示默认图片
+    }
+
+    viewHold.tv_title.setText(mDate.get(position).getTitle());
+    viewHold.tv_data.setText(DateUtil.StringToDate(mDate.get(position).getCreateTime() + ""));
+    return convertView;
+}
+
+```
+
+```properties
+public class NoteBean {
+    private String imageUri;
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
+}
+```
+
+5. 文件：res/layout/noteslistitem.xml
+为列表项增加 ImageView 控件，用于显示图片。
+```properties
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_noteImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_image" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
+
+```
