@@ -34,7 +34,7 @@ public class DateUtil {
 ```
 
 ### 三. `添加笔记查询功能：`
-![Alt Text](./002.png)
+![Alt Text](./notes-master/up_photo_notepad/002.png)
 1. NotesListAdapter.java 通过 Cursor 查询从数据库获取笔记数据，并在 readDate() 和 readDate(Cursor cursor) 方法中处理。
 
 ```properties
@@ -111,7 +111,7 @@ public void Search(String searchTitle) {
 
 ### 四. `UI美化:`
 1. 更改背景
-
+![Alt Text](./notes-master/up_photo_notepad/003.png)
 ```properties
 /*背景颜色选择框*/
 private  void showpopSelectBgWindows(){
@@ -230,6 +230,7 @@ private  void showpopSelectBgWindows(){
 ```
 
 2. 设置主题
+![Alt Text](./notes-master/up_photo_notepad/004.png)
 
 `AppTheme 主题：`
 
@@ -296,6 +297,10 @@ private  void showpopSelectBgWindows(){
 
 
 ### 五. `支持多类型笔记:`
+![Alt Text](./notes-master/up_photo_notepad/005.png)
+
+注：由于做完之后虚拟器出现了些问题，重新下载了一个版本，结果版本太低了，图片显示不出来了。所以这里使用之前在做的过程中的版本了。
+
 1. 文件：NoteEditor.java
 pickImageFromGallery：启动相册选择图片。
 onActivityResult：接收图片的 URI。
