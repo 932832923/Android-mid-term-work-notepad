@@ -5,7 +5,7 @@
 3. UI美化；
 4. 支持多类型笔记；
 ### 二. `笔记条目增加时间戳:`
-![Alt Text](./001.png)
+![Alt Text](./notes-master/up_photo_notepad/001.png)
 1. NotesListAdapter.java：负责显示每个笔记的创建时间，并通过 DateUtil.StringToDate() 转换时间戳为易读格式。
 
 ```properties
