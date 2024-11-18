@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="android:actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>
+    </style>
+
+    <style name="MyActionBar" parent="android:Widget.Holo.ActionBar">
+        <item name="android:titleTextStyle">@style/MyTitleStyle</item>
+        <item name="android:background">@color/PaleVioletRed</item>
+    </style>
+
+    <style name="MyTitleStyle" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="MyOverflowButtonStyle" parent="android:Widget.ActionButton.Overflow">
+        <item name="android:src">@drawable/icon_menu</item>
+    </style>
+
+    <style name="AppThemeDialog" parent="android:Theme.Holo.Dialog">
+
+    </style>
+
+    <style name="MyMenu" parent="android:TextAppearance.Holo.Small">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>
