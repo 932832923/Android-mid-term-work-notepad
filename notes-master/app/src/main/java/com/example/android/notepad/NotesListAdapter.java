@@ -20,12 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.example.android.notepad.application.MyApplication;
 
-
-
-/**
- * Created by qinghua on 2017/4/30.
- */
-
 public class NotesListAdapter extends BaseAdapter {
 
     private Uri mUri;
