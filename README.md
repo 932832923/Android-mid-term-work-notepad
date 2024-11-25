@@ -230,6 +230,7 @@ private  void showpopSelectBgWindows(){
 ```
 
 2. 设置主题
+   
 ![Alt Text](./notes-master/up_photo_notepad/004.png)
 
 `AppTheme 主题：`
@@ -299,7 +300,7 @@ private  void showpopSelectBgWindows(){
 ### 五. `支持多类型笔记:`
 ![Alt Text](./notes-master/up_photo_notepad/005.png)
 
-注：由于做完之后虚拟器出现了些问题，重新下载了一个版本，结果版本太低了，图片显示不出来了。所以这里使用之前在做的过程中的版本了。
+注：由于做完之后虚拟器出现了些问题，重新下载了一个版本，结果版本太低了，图片显示不出来了。所以这里使用之前在做的过程中的图片了。
 
 1. 文件：NoteEditor.java
 pickImageFromGallery：启动相册选择图片。
