@@ -173,7 +173,7 @@ private  void showpopSelectBgWindows(){
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/pink"
+        android:id="@+id/one"
         android:background="@drawable/pink"
         android:layout_weight="0.1"
         android:onClick="ColorSelect"
@@ -182,14 +182,14 @@ private  void showpopSelectBgWindows(){
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="0.1"
-        android:id="@+id/Yello"
+        android:id="@+id/two"
         android:background="@drawable/yellow"
         android:onClick="ColorSelect"
         />
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/PaleVioletRed"
+        android:id="@+id/three"
         android:layout_weight="0.1"
         android:background="@drawable/palevioletred"
         android:onClick="ColorSelect"
@@ -198,7 +198,7 @@ private  void showpopSelectBgWindows(){
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="0.1"
-        android:id="@+id/LightGrey"
+        android:id="@+id/four"
         android:background="@drawable/lightgrey"
         android:onClick="ColorSelect"
         />
@@ -206,7 +206,7 @@ private  void showpopSelectBgWindows(){
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="0.1"
-        android:id="@+id/MediumPurple"
+        android:id="@+id/five"
         android:background="@drawable/mediumpurple"
         android:onClick="ColorSelect"
         />
@@ -214,7 +214,7 @@ private  void showpopSelectBgWindows(){
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="0.1"
-        android:id="@+id/DarkGray"
+        android:id="@+id/six"
         android:background="@drawable/darkgray"
         android:onClick="ColorSelect"
         />
@@ -222,7 +222,7 @@ private  void showpopSelectBgWindows(){
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_weight="0.1"
-        android:id="@+id/Snow"
+        android:id="@+id/seven"
         android:background="@drawable/snow"
         android:onClick="ColorSelect"
         />
