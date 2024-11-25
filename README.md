@@ -1,7 +1,7 @@
 # MyNotePad
 ### 一. `扩展功能如下：`
 1. NoteList界面中笔记条目增加时间戳显示；
-2. 添加笔记查询功能（根据标题或内容查询）；
+2. 添加笔记查询功能（根据标题查询）；
 3. UI美化；
 4. 支持多类型笔记；
 ### 二. `笔记条目增加时间戳:`
@@ -111,6 +111,7 @@ public void Search(String searchTitle) {
 
 ### 四. `UI美化:`
 1. 更改背景
+   
 ![Alt Text](./notes-master/up_photo_notepad/003.png)
 ```properties
 /*背景颜色选择框*/
