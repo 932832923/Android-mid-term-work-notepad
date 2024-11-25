@@ -131,31 +131,31 @@ private  void showpopSelectBgWindows(){
     public void ColorSelect(View view) {
         String color;
         if (view.getId() == R.id.pink) {
-            Drawable btnDrawable1 = getResources().getDrawable(R.drawable.pink);
+            Drawable btnDrawable1 = getResources().getDrawable(R.drawable.one);
             ll_noteList.setBackgroundDrawable(btnDrawable1);
             lv_notesList.setBackgroundDrawable(btnDrawable1);
         } else if (view.getId() == R.id.Yello) {
-            Drawable btnDrawable2 = getResources().getDrawable(R.drawable.yellow);
+            Drawable btnDrawable2 = getResources().getDrawable(R.drawable.two);
             ll_noteList.setBackgroundDrawable(btnDrawable2);
             lv_notesList.setBackgroundDrawable(btnDrawable2);
         } else if (view.getId() == R.id.PaleVioletRed) {
-            Drawable btnDrawable3 = getResources().getDrawable(R.drawable.palevioletred);
+            Drawable btnDrawable3 = getResources().getDrawable(R.drawable.three);
             ll_noteList.setBackgroundDrawable(btnDrawable3);
             lv_notesList.setBackgroundDrawable(btnDrawable3);
         } else if (view.getId() == R.id.LightGrey) {
-            Drawable btnDrawable4 = getResources().getDrawable(R.drawable.lightgrey);
+            Drawable btnDrawable4 = getResources().getDrawable(R.drawable.four);
             ll_noteList.setBackgroundDrawable(btnDrawable4);
             lv_notesList.setBackgroundDrawable(btnDrawable4);
         } else if (view.getId() == R.id.MediumPurple) {
-            Drawable btnDrawable5 = getResources().getDrawable(R.drawable.mediumpurple);
+            Drawable btnDrawable5 = getResources().getDrawable(R.drawable.five);
             ll_noteList.setBackgroundDrawable(btnDrawable5);
             lv_notesList.setBackgroundDrawable(btnDrawable5);
         } else if (view.getId() == R.id.DarkGray) {
-            Drawable btnDrawable6 = getResources().getDrawable(R.drawable.darkgray);
+            Drawable btnDrawable6 = getResources().getDrawable(R.drawable.six);
             ll_noteList.setBackgroundDrawable(btnDrawable6);
             lv_notesList.setBackgroundDrawable(btnDrawable6);
         } else if (view.getId() == R.id.Snow) {
-            Drawable btnDrawable7 = getResources().getDrawable(R.drawable.snow);
+            Drawable btnDrawable7 = getResources().getDrawable(R.drawable.seven);
             ll_noteList.setBackgroundDrawable(btnDrawable7);
             lv_notesList.setBackgroundDrawable(btnDrawable7);
         }
