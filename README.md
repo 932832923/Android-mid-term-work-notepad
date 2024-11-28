@@ -174,7 +174,7 @@ private  void showpopSelectBgWindows(){
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:id="@+id/one"
-        android:background="@drawable/pink"
+        android:background="@drawable/one"
         android:layout_weight="0.1"
         android:onClick="ColorSelect"
         />
@@ -183,7 +183,7 @@ private  void showpopSelectBgWindows(){
         android:layout_height="60dp"
         android:layout_weight="0.1"
         android:id="@+id/two"
-        android:background="@drawable/yellow"
+        android:background="@drawable/two"
         android:onClick="ColorSelect"
         />
     <ImageView
@@ -191,7 +191,7 @@ private  void showpopSelectBgWindows(){
         android:layout_height="60dp"
         android:id="@+id/three"
         android:layout_weight="0.1"
-        android:background="@drawable/palevioletred"
+        android:background="@drawable/three"
         android:onClick="ColorSelect"
         />
     <ImageView
@@ -199,7 +199,7 @@ private  void showpopSelectBgWindows(){
         android:layout_height="60dp"
         android:layout_weight="0.1"
         android:id="@+id/four"
-        android:background="@drawable/lightgrey"
+        android:background="@drawable/four"
         android:onClick="ColorSelect"
         />
     <ImageView
@@ -207,7 +207,7 @@ private  void showpopSelectBgWindows(){
         android:layout_height="60dp"
         android:layout_weight="0.1"
         android:id="@+id/five"
-        android:background="@drawable/mediumpurple"
+        android:background="@drawable/five"
         android:onClick="ColorSelect"
         />
     <ImageView
@@ -215,7 +215,7 @@ private  void showpopSelectBgWindows(){
         android:layout_height="60dp"
         android:layout_weight="0.1"
         android:id="@+id/six"
-        android:background="@drawable/darkgray"
+        android:background="@drawable/six"
         android:onClick="ColorSelect"
         />
     <ImageView
@@ -223,7 +223,7 @@ private  void showpopSelectBgWindows(){
         android:layout_height="60dp"
         android:layout_weight="0.1"
         android:id="@+id/seven"
-        android:background="@drawable/snow"
+        android:background="@drawable/seven"
         android:onClick="ColorSelect"
         />
 
