@@ -234,69 +234,54 @@ private  void showpopSelectBgWindows(){
    
 ![Alt Text](./notes-master/up_photo_notepad/004.png)
 
-`AppTheme 主题：`
-
-设置整个应用的风格，包括 ActionBar 的背景颜色（PaleVioletRed），菜单文字颜色（white），以及溢出按钮的样式（icon_menu）。
-
 ```properties
-<style name="AppTheme" parent="android:Theme.Holo.Light">
-    <item name="android:actionBarStyle">@style/MyActionBar</item>
-    <item name="android:actionMenuTextColor">@color/white</item>
-    <item name="android:actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>
-</style>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
+        <item name="android:actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>
+    </style>
+
+    <style name="MyActionBar" parent="android:Widget.Holo.ActionBar">
+        <item name="android:titleTextStyle">@style/MyTitleStyle</item>
+        <item name="android:background">@color/PaleVioletRed</item>
+    </style>
+
+    <style name="MyTitleStyle" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="MyOverflowButtonStyle" parent="android:Widget.ActionButton.Overflow">
+        <item name="android:src">@drawable/icon_menu</item>
+    </style>
+
+    <style name="AppThemeDialog" parent="android:Theme.Holo.Dialog">
+
+    </style>
+
+    <style name="MyMenu" parent="android:TextAppearance.Holo.Small">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>
 ```
 
-作用：定义整个应用的主主题，继承自 android:Theme.Holo.Light。
+注：
 
-`MyActionBar：`
+（1）主题设置：定义了 AppTheme，并自定义了 ActionBar 的样式、菜单文本颜色和溢出按钮样式。
 
-自定义 ActionBar，设置背景颜色和标题文字样式。
+（2）ActionBar 样式：通过 MyActionBar 自定义了 ActionBar 的背景颜色和标题文本样式。
 
-```properties
-<style name="MyActionBar" parent="android:Widget.Holo.ActionBar">
-    <item name="android:titleTextStyle">@style/MyTitleStyle</item>
-    <item name="android:background">@color/PaleVioletRed</item>
-</style>
-```
+（3）标题样式：MyTitleStyle 设置了 ActionBar 标题的文本颜色。
 
-作用：自定义 ActionBar 的外观，继承自 android:Widget.Holo.ActionBar。
+（4）溢出按钮样式：MyOverflowButtonStyle 自定义了溢出按钮的图标。
 
-`MyOverflowButtonStyle：`
+（5）对话框主题：AppThemeDialog 定义了一个基础的对话框样式。
 
-修改溢出菜单按钮的图标。
-
-```properties
-<style name="MyOverflowButtonStyle" parent="android:Widget.ActionButton.Overflow">
-    <item name="android:src">@drawable/icon_menu</item>
-</style>
-```
-
-作用：自定义溢出菜单按钮的样式。
-
-`MyMenu：`
-
-自定义菜单项的字体大小、颜色和样式。
-
-```properties
-<style name="MyMenu" parent="android:TextAppearance.Holo.Small">
-    <item name="android:textSize">16sp</item>
-    <item name="android:textStyle">bold</item>
-    <item name="android:textColor">@color/white</item>
-</style>
-```
-
-作用：定义菜单文字的样式。
-
-`AppThemeDialog：`
-
-定义了一个对话框样式，但未添加具体的自定义样式。
-
-```properties
-<style name="AppThemeDialog" parent="android:Theme.Holo.Dialog">
-</style>
-```
-
-
+（6）菜单文本样式：MyMenu 自定义了菜单文本的字体大小、样式和颜色。
 
 ### 五. `支持多类型笔记:`
 ![Alt Text](./notes-master/up_photo_notepad/005.png)
