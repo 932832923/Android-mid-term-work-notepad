@@ -34,6 +34,7 @@ public class DateUtil {
 ```
 
 ### 三. `添加笔记查询功能：`
+![Alt Text](./notes-master/up_photo_notepad/006.png)
 ![Alt Text](./notes-master/up_photo_notepad/002.png)
 1. NotesListAdapter.java 通过 Cursor 查询从数据库获取笔记数据，并在 readDate() 和 readDate(Cursor cursor) 方法中处理。
 
