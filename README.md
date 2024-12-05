@@ -234,7 +234,7 @@ private  void showpopSelectBgWindows(){
 </LinearLayout>
 ```
 
-2. 设置主题
+2. 设置主题（还设置蓝色圆形加号）
    
 ![Alt Text](./notes-master/up_photo_notepad/004.png)
 
