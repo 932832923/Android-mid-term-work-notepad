@@ -114,8 +114,10 @@ public void Search(String searchTitle) {
 1. 更改背景
    
 ![Alt Text](./notes-master/up_photo_notepad/003.png)
+
+背景颜色选择框
+
 ```properties
-/*背景颜色选择框*/
 private  void showpopSelectBgWindows(){
     LayoutInflater inflater = LayoutInflater.from(this);
     View view = inflater.inflate(R.layout.dialog_bg_select_layout, null);
@@ -127,8 +129,9 @@ private  void showpopSelectBgWindows(){
 }
 ```
 
+背景改变的监听
+
 ```properties
-/*背景改变的监听*/
     public void ColorSelect(View view) {
         String color;
         if (view.getId() == R.id.pink) {
